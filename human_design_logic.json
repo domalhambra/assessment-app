@@ -1,95 +1,180 @@
 {
   "human_design_test": {
-    "version": "1.0",
     "archetypes": [
       {
-        "slug": "individualist",
-        "title": "The Individualist",
-        "theme": "Self-Empowerment & Unique Rhythm",
-        "description": "Your primary drive is the pursuit of inner truth and sudden insights.",
-        "secondary_description": "You bring a unique, independent streak to everything you do, ensuring that your primary actions always remain true to your own internal rhythm.",
+        "slug": "the-mystic-thinker",
+        "title": "The Mystic Thinker",
+        "description": "You relate to life through the pressure of 'Knowing.' You often hear the truth before you see it, finding yourself preoccupied with deep mysteries and sudden awareness.",
+        "secondary_description": "You carry an undercurrent of sudden insight and mental pressure that drives you toward the unknown.",
         "channels": [
-          {"id": "10-20", "name": "Awakening", "gates": [10, 20]},
-          {"id": "10-34", "name": "Exploration", "gates": [10, 34]},
-          {"id": "10-57", "name": "Perfected Form", "gates": [10, 57]},
-          {"id": "20-34", "name": "Charisma", "gates": [20, 34]},
-          {"id": "20-57", "name": "Brainwave", "gates": [20, 57]},
-          {"id": "34-57", "name": "Power", "gates": [34, 57]},
+          {"id": "61-24", "name": "Awareness", "gates": [61, 24]},
+          {"id": "43-23", "name": "Structuring", "gates": [43, 23]},
+          {"id": "38-28", "name": "Struggle", "gates": [38, 28]}
+        ]
+      },
+      {
+        "slug": "the-innovative-genius",
+        "title": "The Innovative Genius",
+        "description": "Your lived experience is one of breakthroughs. You take complex, 'weird' ideas and structure them into concepts that can change the future path for others.",
+        "secondary_description": "You have a secondary ability to simplify the complex and initiate others through your unique insights.",
+        "channels": [
+          {"id": "43-23", "name": "Structuring", "gates": [43, 23]},
+          {"id": "1-8", "name": "Inspiration", "gates": [1, 8]},
           {"id": "25-51", "name": "Initiation", "gates": [25, 51]}
         ]
       },
       {
-        "slug": "truth-seeker",
-        "title": "The Truth Seeker",
-        "theme": "Inner Knowing & Acoustic Insight",
-        "description": "Your primary drive is the pursuit of inner truth and sudden insights.",
-        "secondary_description": "An undercurrent of deep intuition and 'aha' moments follows you, often providing sudden clarity to your primary goals and decisions.",
+        "slug": "the-system-corrector",
+        "title": "The System Corrector",
+        "description": "You relate to the world by seeing what is broken. You feel a deep pressure to challenge current patterns and perfect them for the collective joy of life.",
+        "secondary_description": "You bring a secondary drive for logic and detail that ensures long-term viability.",
         "channels": [
-          {"id": "61-24", "name": "Awareness", "gates": [61, 24]},
-          {"id": "43-23", "name": "Structuring", "gates": [43, 23]},
-          {"id": "38-28", "name": "Struggle", "gates": [38, 28]},
-          {"id": "39-55", "name": "Emoting", "gates": [39, 55]},
-          {"id": "12-22", "name": "Openness", "gates": [12, 22]},
-          {"id": "2-14", "name": "The Beat", "gates": [2, 14]}
+          {"id": "18-58", "name": "Judgment", "gates": [18, 58]},
+          {"id": "17-62", "name": "Acceptance", "gates": [17, 62]},
+          {"id": "16-48", "name": "The Wavelength", "gates": [16, 48]}
         ]
       },
       {
-        "slug": "steward",
-        "title": "The Steward",
-        "theme": "Community, Family & Support",
-        "description": "Your life is built around the protection and nurturing of your immediate family, team, or community.",
-        "secondary_description": "You carry a deep sense of inner knowing that flavors your primary actions with intuition and mystery.",
+        "slug": "the-nurturing-guardian",
+        "title": "The Nurturing Guardian",
+        "description": "Your experience is centered on the health of your 'tribe.' You relate to others through an instinctive responsibility to protect, nourish, and care for the spirit.",
+        "secondary_description": "You possess a secondary protective instinct that creates a sense of safety and community.",
         "channels": [
           {"id": "50-27", "name": "Preservation", "gates": [50, 27]},
           {"id": "59-6", "name": "Mating", "gates": [59, 6]},
-          {"id": "44-26", "name": "Surrender", "gates": [44, 26]},
-          {"id": "19-49", "name": "Synthesis", "gates": [19, 49]},
+          {"id": "19-49", "name": "Synthesis", "gates": [19, 49]}
+        ]
+      },
+      {
+        "slug": "the-resource-leader",
+        "title": "The Resource Leader",
+        "description": "You relate to others through the management of life's material resources. You ensure the tribe is fed, clothed, and fairly organized for survival.",
+        "secondary_description": "You have a secondary talent for bargaining and maintaining the physical infrastructure of your groups.",
+        "channels": [
+          {"id": "21-45", "name": "Money", "gates": [21, 45]},
           {"id": "37-40", "name": "Community", "gates": [37, 40]},
+          {"id": "44-26", "name": "Surrender", "gates": [44, 26]}
+        ]
+      },
+      {
+        "slug": "the-creative-pulse",
+        "title": "The Creative Pulse",
+        "description": "You live a life of unique, rhythmic expression. Your inner pulse acts as a beacon of inspiration for those who have lost their own creative direction.",
+        "secondary_description": "You bring an independent streak that encourages others to follow their own unique inner timing.",
+        "channels": [
+          {"id": "1-8", "name": "Inspiration", "gates": [1, 8]},
+          {"id": "2-14", "name": "The Beat", "gates": [2, 14]},
+          {"id": "12-22", "name": "Openness", "gates": [12, 22]}
+        ]
+      },
+      {
+        "slug": "the-ambitious-achiever",
+        "title": "The Ambitious Achiever",
+        "description": "Your lived experience is a climb toward success. You show others what is possible when raw ambition is paired with instinctive endurance.",
+        "secondary_description": "You carry a secondary drive for transformation and material success that others find grounding.",
+        "channels": [
+          {"id": "32-54", "name": "Transformation", "gates": [32, 54]},
+          {"id": "21-45", "name": "Money", "gates": [21, 45]},
+          {"id": "54-32", "name": "Ambition", "gates": [54, 32]}
+        ]
+      },
+      {
+        "slug": "the-sensitive-synthesizer",
+        "title": "The Sensitive Synthesizer",
+        "description": "You relate to others through emotional sensitivity. You feel the needs of the community and seek to create synthesis and spiritual abundance.",
+        "secondary_description": "You possess a secondary ability to sense the spiritual needs of your tribe and bridge those gaps.",
+        "channels": [
+          {"id": "19-49", "name": "Synthesis", "gates": [19, 49]},
+          {"id": "39-55", "name": "Emoting", "gates": [39, 55]},
+          {"id": "41-30", "name": "Recognition", "gates": [41, 30]}
+        ]
+      },
+      {
+        "slug": "the-passionate-adventurer",
+        "title": "The Passionate Adventurer",
+        "description": "Your life is a series of emotional cycles that lead to wisdom. You share your experiences of desire and trial-and-error to help the collective grow.",
+        "secondary_description": "You carry an intense undercurrent of experience that sparks movement and reflection in others.",
+        "channels": [
+          {"id": "41-30", "name": "Recognition", "gates": [41, 30]},
+          {"id": "35-36", "name": "Transitoriness", "gates": [35, 36]},
+          {"id": "53-42", "name": "Maturation", "gates": [53, 42]}
+        ]
+      },
+      {
+        "slug": "the-focused-master",
+        "title": "The Focused Master",
+        "description": "You live in a world of deep concentration and skill. You stay still until a logical pattern is fully understood or a cycle is perfectly finished.",
+        "secondary_description": "You bring a secondary stillness and disciplined focus that allows for high-level mastery.",
+        "channels": [
+          {"id": "9-52", "name": "Concentration", "gates": [9, 52]},
+          {"id": "16-48", "name": "The Wavelength", "gates": [16, 48]},
+          {"id": "52-9", "name": "Focus", "gates": [52, 9]}
+        ]
+      },
+      {
+        "slug": "the-instinctive-entrepreneur",
+        "title": "The Instinctive Entrepreneur",
+        "description": "You relate to others through your 'nose' for opportunity. You use instinctive memory to sell ideas and products that thrive in the now.",
+        "secondary_description": "You possess a secondary survival instinct that ensures you stay competitive and relevant.",
+        "channels": [
+          {"id": "44-26", "name": "Surrender", "gates": [44, 26]},
+          {"id": "32-54", "name": "Transformation", "gates": [32, 54]},
           {"id": "21-45", "name": "Money", "gates": [21, 45]}
         ]
       },
       {
-        "slug": "logic-master",
-        "title": "The Logic Master",
-        "theme": "Patterns, Future-Planning & Skill",
-        "description": "Your primary drive is the pursuit of inner truth and sudden insights.",
-        "secondary_description": "You possess a secondary drive for order and efficiency, often looking for patterns or improvements in the background of your main pursuits.",
+        "slug": "the-shock-catalyst",
+        "title": "The Shock Catalyst",
+        "description": "Your presence is initiatory. You relate to others by 'shocking' them into a new way of being, taking leaps into the unknown with competitive power.",
+        "secondary_description": "You carry a secondary frequency of pure mutation and mutation that disrupts the status quo.",
         "channels": [
-          {"id": "63-4", "name": "Logic", "gates": [63, 4]},
-          {"id": "17-62", "name": "Acceptance", "gates": [17, 62]},
-          {"id": "16-48", "name": "The Wavelength", "gates": [16, 48]},
-          {"id": "18-58", "name": "Judgment", "gates": [18, 58]},
-          {"id": "9-52", "name": "Concentration", "gates": [9, 52]},
-          {"id": "5-15", "name": "Rhythm", "gates": [5, 15]},
-          {"id": "31-7", "name": "The Alpha", "gates": [31, 7]}
+          {"id": "25-51", "name": "Initiation", "gates": [25, 51]},
+          {"id": "3-60", "name": "Mutation", "gates": [3, 60]},
+          {"id": "51-25", "name": "Shock", "gates": [51, 25]}
         ]
       },
       {
-        "slug": "storyteller",
-        "title": "The Storyteller",
-        "theme": "Experience, Sensing & The Past",
-        "description": "Your primary drive is the pursuit of inner truth and sudden insights.",
-        "secondary_description": "Your journey is flavored by a need to reflect on past lessons, allowing you to bring a wealth of lived experience and wisdom to your primary role.",
+        "slug": "the-community-negotiator",
+        "title": "The Community Negotiator",
+        "description": "You relate to others through the heart. You understand that community is built on loyalty, fair deals, and physical bonding.",
+        "secondary_description": "You have a secondary drive for spiritualizing tribal agreements and maintaining communal peace.",
         "channels": [
-          {"id": "64-47", "name": "Abstraction", "gates": [64, 47]},
-          {"id": "11-56", "name": "Curiosity", "gates": [11, 56]},
-          {"id": "53-42", "name": "Maturation", "gates": [53, 42]},
-          {"id": "41-30", "name": "Recognition", "gates": [41, 30]},
+          {"id": "37-40", "name": "Community", "gates": [37, 40]},
+          {"id": "19-49", "name": "Synthesis", "gates": [19, 49]},
+          {"id": "40-37", "name": "The Bargain", "gates": [40, 37]}
+        ]
+      },
+      {
+        "slug": "the-experimental-sage",
+        "title": "The Experimental Sage",
+        "description": "Your lived experience is one of 'trial and error.' You dive into cycles of experience and share the wisdom of your journey when the dust settles.",
+        "secondary_description": "You possess a secondary ability to abstract meaning from the past and turn it into stories.",
+        "channels": [
           {"id": "35-36", "name": "Transitoriness", "gates": [35, 36]},
+          {"id": "64-47", "name": "Abstraction", "gates": [64, 47]},
           {"id": "33-13", "name": "The Prodigal", "gates": [33, 13]}
         ]
       },
       {
-        "slug": "catalyst",
-        "title": "The Catalyst",
-        "theme": "Creative Pulse & Mutation",
-        "description": "Your primary drive is the pursuit of inner truth and sudden insights.",
-        "secondary_description": "You carry a pulsing, transformative energy that tends to spark change and innovation in others, even when you aren't consciously trying to.",
+        "slug": "the-rhythmic-guide",
+        "title": "The Rhythmic Guide",
+        "description": "You live in flow with the natural patterns of life. Your internal clock draws others into a healthy, productive, and stable rhythm.",
+        "secondary_description": "You bring a secondary stability to environments by aligning with the natural flow of time.",
         "channels": [
-          {"id": "3-60", "name": "Mutation", "gates": [3, 60]},
-          {"id": "1-8", "name": "Inspiration", "gates": [1, 8]},
-          {"id": "29-46", "name": "Discovery", "gates": [29, 46]},
-          {"id": "42-53", "name": "Cycles", "gates": [42, 53]}
+          {"id": "5-15", "name": "Rhythm", "gates": [5, 15]},
+          {"id": "2-14", "name": "The Beat", "gates": [2, 14]},
+          {"id": "15-5", "name": "Flow", "gates": [15, 5]}
+        ]
+      },
+      {
+        "slug": "the-charismatic-manifestor",
+        "title": "The Charismatic Manifestor",
+        "description": "You relate to the world through pure, busy activity. Your energy is infectious, turning your convictions into busy reality in the blink of an eye.",
+        "secondary_description": "You carry a secondary frequency of power and self-direction that others find magnetic and unstoppable.",
+        "channels": [
+          {"id": "20-34", "name": "Charisma", "gates": [20, 34]},
+          {"id": "34-57", "name": "The Power", "gates": [34, 57]},
+          {"id": "20-57", "name": "Brainwave", "gates": [20, 57]}
         ]
       }
     ]

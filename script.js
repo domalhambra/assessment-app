@@ -32,16 +32,26 @@ let gateScores = {}; // We will store scores for each gate number here
 
 function displayQuestion() {
     const question = questions[currentQuestionIndex];
-    document.getElementById("question-text").innerText = question.text;
+    
+    // Safety check: if question is undefined, stop and show results
+    if (!question) {
+        showResults();
+        return;
+    }
 
-    // Update Progress Bar
-    const progressPercent = (currentQuestionIndex / questions.length) * 100;
-    document.getElementById("progress-fill").style.width = `${progressPercent}%`;
+    document.getElementById("question-text").innerText = question.text;
+    document.getElementById("progress-fill").style.width = 
+        `${((currentQuestionIndex) / questions.length) * 100}%`;
 }
 
 function handleAnswer(value) {
     const q = questions[currentQuestionIndex];
-    const totalPoints = value * q.weight;
+    
+    // Logic: If the question is reversed, flip the value (1 becomes 5, 2 becomes 4, etc.)
+    // Calculation: 6 - 1 = 5 | 6 - 5 = 1
+    let adjustedValue = q.reversed ? (6 - value) : value;
+    
+    const totalPoints = adjustedValue * q.weight;
 
     // 1. Add to Archetype Score
     archetypeScores[q.archetype] += totalPoints;
@@ -60,86 +70,69 @@ function handleAnswer(value) {
     }
 }
 
-function showResults() {
-    // Hide the question box and show the results box
-    document.getElementById("question-box").style.display = "none";
-    document.getElementById("results-box").style.display = "block";
+function findWinningChannel(archetypeSlug) {
+    const archetype = allArchetypes.find(a => a.slug === archetypeSlug);
+    if (!archetype) return { id: "N/A", name: "Channel Not Found" };
+    
+    let bestChannel = archetype.channels[0];
+    let maxScore = -1;
 
-    const sorted = Object.entries(archetypeScores).sort((a, b) => b[1] - a[1]);
-    const primary = sorted[0];   
-    const secondary = sorted[1]; 
-
-    const margin = primary[1] * 0.10; 
-    const isHybrid = (primary[1] - secondary[1]) <= margin;
-
-    if (isHybrid) {
-        renderHybridResult(primary[0], secondary[0]);
-    } else {
-        renderSingleResult(primary[0]);
-    }
+    archetype.channels.forEach(channel => {
+        const score = channel.gates.reduce((sum, gate) => sum + (gateScores[gate] || 0), 0);
+        if (score > maxScore) {
+            maxScore = score;
+            bestChannel = channel;
+        }
+    });
+    return bestChannel;
 }
 
 function renderSingleResult(winnerSlug) {
     const archetypeData = allArchetypes.find(a => a.slug === winnerSlug);
     const specificChannel = findWinningChannel(winnerSlug);
-
     document.getElementById("archetype-result").innerText = archetypeData.title;
-    
-    // Target the newly created 'channel-result' div
     document.getElementById("channel-result").innerHTML = `
-        <div class="description-box" style="color: #1f2937;">
+        <div class="description-box">
             <p>${archetypeData.description}</p>
             <hr>
-            <h3>Core Channel: ${specificChannel.name} (${specificChannel.id})</h3>
-        </div>
-    `;
+            <h3>Primary Energy Frequency:</h3>
+            <p><span class="channel-pill">${specificChannel.id}</span> <strong>${specificChannel.name}</strong></p>
+        </div>`;
 }
 
 function renderHybridResult(pSlug, sSlug) {
-    // 1. Point the slugs to the actual objects in your JSON
     const pData = allArchetypes.find(a => a.slug === pSlug);
     const sData = allArchetypes.find(a => a.slug === sSlug);
-    
-    // 2. Find the top channels for both
     const pChannel = findWinningChannel(pSlug);
     const sChannel = findWinningChannel(sSlug);
-
-    // 3. Update the UI using the .title and .secondary_description fields
     document.getElementById("archetype-result").innerText = `${pData.title} + ${sData.title}`;
-
     document.getElementById("channel-result").innerHTML = `
         <div class="description-box">
             <p><strong>Primary:</strong> ${pData.description}</p>
-            <p><strong>Supporting Trait:</strong> ${sData.secondary_description}</p>
+            <p><strong>Supporting:</strong> ${sData.secondary_description}</p>
             <hr>
-            <h3>Active Channels:</h3>
-            <p>Main: ${pChannel.name} (${pChannel.id})</p>
-            <p>Secondary: ${sChannel.name} (${sChannel.id})</p>
-        </div>
-    `;
+            <h3>Core Channels:</h3>
+            <p><span class="channel-pill">${pChannel.id}</span> ${pChannel.name}</p>
+            <p><span class="channel-pill">${sChannel.id}</span> ${sChannel.name}</p>
+        </div>`;
 }
 
-function findWinningChannel(archetypeSlug) {
-    // 1. Find the archetype object in our JSON data
-    const archetype = allArchetypes.find(a => a.slug === archetypeSlug);
-    
-    let topChannel = null;
-    let highestChannelScore = -1;
+function showResults() {
+    document.getElementById("quiz-container").style.display = "none";
+    document.getElementById("results-box").style.display = "block";
 
-    // 2. Loop through only the channels belonging to this archetype
-    archetype.channels.forEach(channel => {
-        const [gateA, gateB] = channel.gates;
-        
-        // Sum the scores of the two gates (default to 0 if no points were earned)
-        const currentScore = (gateScores[gateA] || 0) + (gateScores[gateB] || 0);
+    const sortedArchetypes = Object.entries(archetypeScores)
+        .sort(([, a], [, b]) => b - a);
 
-        if (currentScore > highestChannelScore) {
-            highestChannelScore = currentScore;
-            topChannel = channel;
-        }
-    });
+    const [winner1, score1] = sortedArchetypes[0];
+    const [winner2, score2] = sortedArchetypes[1];
 
-    return topChannel; // Returns { id: "61-24", name: "Awareness", ... }
+    // If 2nd place is within 15% of the winner, show Hybrid
+    if (score1 - score2 <= (score1 * 0.15)) {
+        renderHybridResult(winner1, winner2);
+    } else {
+        renderSingleResult(winner1);
+    }
 }
 
 // Initialize the first question
