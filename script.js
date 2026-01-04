@@ -4,50 +4,68 @@ let currentQuestionIndex = 0;
 let archetypeScores = {};
 let gateScores = {};
 
-// Initialize scores once archetypes load
-function initScores() {
-    allArchetypes.forEach(archetype => {
-        archetypeScores[archetype.slug] = 0;
-    });
+/**
+ * 1. INITIALIZATION & DATA LOADING
+ * Fetches data and builds the dynamic scoring table
+ */
+async function loadTestData() {
+    try {
+        const [qRes, lRes] = await Promise.all([
+            fetch('questions.json'),
+            fetch('human_design_logic.json')
+        ]);
+
+        const qData = await qRes.json();
+        const lData = await lRes.json();
+        
+        questions = qData.questions;
+        allArchetypes = lData.human_design_test.archetypes;
+        
+        // Dynamically build the score tracking for whatever archetypes exist in JSON
+        allArchetypes.forEach(archetype => {
+            archetypeScores[archetype.id] = 0;
+        });
+
+        displayQuestion(); 
+    } catch (error) {
+        console.error("Data loading error:", error);
+    }
 }
 
-// 1. Load Data with corrected path for your JSON structure
-Promise.all([
-    fetch('questions.json').then(res => res.json()),
-    fetch('human_design_logic.json').then(res => res.json())
-]).then(([qData, lData]) => {
-    questions = qData.questions;
-    // Pointing to your specific JSON nesting
-    allArchetypes = lData.human_design_test.archetypes; 
-    initScores();
-    displayQuestion();
-}).catch(err => console.error("Error loading JSON files:", err));
+loadTestData();
 
+/**
+ * 2. QUIZ FLOW LOGIC
+ */
 function displayQuestion() {
     const question = questions[currentQuestionIndex];
+    
+    // Safety check for end of quiz
     if (!question) {
         showResults();
         return;
     }
 
     document.getElementById("question-text").innerText = question.text;
-    const progress = ((currentQuestionIndex) / questions.length) * 100;
-    document.getElementById("progress-fill").style.width = `${progress}%`;
+
+    // Update Progress Bar
+    const progressPercent = (currentQuestionIndex / questions.length) * 100;
+    document.getElementById("progress-fill").style.width = `${progressPercent}%`;
 }
 
 function handleAnswer(value) {
     const q = questions[currentQuestionIndex];
     
-    // Logic for Reversed Questions
+    // Process Reversed Logic: (1 becomes 5, 5 becomes 1)
     let adjustedValue = q.reversed ? (6 - value) : value;
     const totalPoints = adjustedValue * (q.weight || 1);
 
-    // Update Archetype Scores
-    if (archetypeScores.hasOwnProperty(q.archetype)) {
-        archetypeScores[q.archetype] += totalPoints;
+    // Add points to Archetype (via ID)
+    if (archetypeScores.hasOwnProperty(q.archetype_id)) {
+        archetypeScores[q.archetype_id] += totalPoints;
     }
 
-    // Update Gate Scores
+    // Add points to individual Gates
     q.impacted_gates.forEach(gate => {
         gateScores[gate] = (gateScores[gate] || 0) + totalPoints;
     });
@@ -60,49 +78,62 @@ function handleAnswer(value) {
     }
 }
 
+/**
+ * 3. SCORING & CHANNEL CALCULATION
+ */
+function findWinningChannel(archetypeObj) {
+    if (!archetypeObj || !archetypeObj.channels) return null;
+    
+    let topChannel = archetypeObj.channels[0];
+    let highestChannelScore = -1;
+
+    archetypeObj.channels.forEach(channel => {
+        // Calculate channel score based on sum of its two gates
+        const currentScore = channel.gates.reduce((sum, gate) => sum + (gateScores[gate] || 0), 0);
+
+        if (currentScore > highestChannelScore) {
+            highestChannelScore = currentScore;
+            topChannel = channel;
+        }
+    });
+
+    return topChannel;
+}
+
+/**
+ * 4. RESULT RENDERING
+ */
 function showResults() {
     document.getElementById("quiz-container").style.display = "none";
     document.getElementById("results-box").style.display = "block";
 
-    // Sort to find winners
+    // Sort archetypes by score descending
     const sorted = Object.entries(archetypeScores).sort(([, a], [, b]) => b - a);
-    const [w1, s1] = sorted[0];
-    const [w2, s2] = sorted[1];
+    
+    // Get Winner IDs
+    const winner1Id = parseInt(sorted[0][0]);
+    const winner2Id = parseInt(sorted[1][0]);
+    const score1 = sorted[0][1];
+    const score2 = sorted[1][1];
 
-    // Threshold for Hybrid: 2nd place within 15% of 1st place
-    if (s1 - s2 <= (s1 * 0.15)) {
-        renderHybridResult(w1, w2);
+    // Look up actual data from allArchetypes
+    const winner1Data = allArchetypes.find(a => a.id === winner1Id);
+    const winner2Data = allArchetypes.find(a => a.id === winner2Id);
+
+    // Hybrid Threshold: 15%
+    if (score1 - score2 <= (score1 * 0.15)) {
+        renderHybridResult(winner1Data, winner2Data);
     } else {
-        renderSingleResult(w1);
+        renderSingleResult(winner1Data);
     }
 }
 
-// Logic to find the specific highest-scoring channel within an archetype
-function findWinningChannel(archetypeSlug) {
-    const archetype = allArchetypes.find(a => a.slug === archetypeSlug);
-    if (!archetype || !archetype.channels) return { id: "N/A", name: "Channel Not Found" };
-    
-    let bestChannel = archetype.channels[0];
-    let maxScore = -1;
-
-    archetype.channels.forEach(channel => {
-        const score = channel.gates.reduce((sum, gate) => sum + (gateScores[gate] || 0), 0);
-        if (score > maxScore) {
-            maxScore = score;
-            bestChannel = channel;
-        }
-    });
-    return bestChannel;
-}
-
-function renderSingleResult(winnerSlug) {
-    const archetypeData = allArchetypes.find(a => a.slug === winnerSlug);
-    const channel = findWinningChannel(winnerSlug);
-
-    document.getElementById("archetype-result").innerText = archetypeData.title;
+function renderSingleResult(winner) {
+    const channel = findWinningChannel(winner);
+    document.getElementById("archetype-result").innerText = winner.title;
     document.getElementById("channel-result").innerHTML = `
         <div class="description-box">
-            <p>${archetypeData.description}</p>
+            <p>${winner.description}</p>
             <hr>
             <h3>Core Energetic Frequency:</h3>
             <p><span class="channel-pill">${channel.id}</span> <strong>${channel.name}</strong></p>
@@ -110,17 +141,15 @@ function renderSingleResult(winnerSlug) {
     `;
 }
 
-function renderHybridResult(pSlug, sSlug) {
-    const pData = allArchetypes.find(a => a.slug === pSlug);
-    const sData = allArchetypes.find(a => a.slug === sSlug);
-    const pChannel = findWinningChannel(pSlug);
-    const sChannel = findWinningChannel(sSlug);
+function renderHybridResult(pWinner, sWinner) {
+    const pChannel = findWinningChannel(pWinner);
+    const sChannel = findWinningChannel(sWinner);
 
-    document.getElementById("archetype-result").innerText = `${pData.title} + ${sData.title}`;
+    document.getElementById("archetype-result").innerText = `${pWinner.title} + ${sWinner.title}`;
     document.getElementById("channel-result").innerHTML = `
         <div class="description-box">
-            <p><strong>Primary Profile:</strong> ${pData.description}</p>
-            <p><strong>Supporting Trait:</strong> ${sData.secondary_description}</p>
+            <p><strong>Primary Profile:</strong> ${pWinner.description}</p>
+            <p><strong>Supporting Trait:</strong> ${sWinner.secondary_description}</p>
             <hr>
             <h3>Core Channels:</h3>
             <p><span class="channel-pill">${pChannel.id}</span> ${pChannel.name}</p>
@@ -129,6 +158,22 @@ function renderHybridResult(pSlug, sSlug) {
     `;
 }
 
+/**
+ * 5. UTILITY FUNCTIONS
+ */
 function restartTest() {
     location.reload();
+}
+
+function shareResults() {
+    const archetype = document.getElementById("archetype-result").innerText;
+    const url = window.location.href;
+    const text = `🧬 My Human Design Archetype is: ${archetype}! Find yours here: ${url}`;
+
+    if (navigator.share) {
+        navigator.share({ title: 'My Results', text: text, url: url });
+    } else {
+        navigator.clipboard.writeText(text);
+        alert("Results copied to clipboard!");
+    }
 }

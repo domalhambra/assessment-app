@@ -2,6 +2,7 @@
   "human_design_test": {
     "archetypes": [
       {
+        "id": 1,
         "slug": "the-mystic-thinker",
         "title": "The Mystic Thinker",
         "description": "You relate to life through the pressure of 'Knowing.' You often hear the truth before you see it, finding yourself preoccupied with deep mysteries and sudden awareness.",
@@ -13,6 +14,7 @@
         ]
       },
       {
+        "id": 2,
         "slug": "the-innovative-genius",
         "title": "The Innovative Genius",
         "description": "Your lived experience is one of breakthroughs. You take complex, 'weird' ideas and structure them into concepts that can change the future path for others.",
@@ -24,6 +26,7 @@
         ]
       },
       {
+        "id": 3,
         "slug": "the-system-corrector",
         "title": "The System Corrector",
         "description": "You relate to the world by seeing what is broken. You feel a deep pressure to challenge current patterns and perfect them for the collective joy of life.",
@@ -35,6 +38,7 @@
         ]
       },
       {
+        "id": 4,
         "slug": "the-nurturing-guardian",
         "title": "The Nurturing Guardian",
         "description": "Your experience is centered on the health of your 'tribe.' You relate to others through an instinctive responsibility to protect, nourish, and care for the spirit.",
@@ -46,6 +50,7 @@
         ]
       },
       {
+        "id": 5,
         "slug": "the-resource-leader",
         "title": "The Resource Leader",
         "description": "You relate to others through the management of life's material resources. You ensure the tribe is fed, clothed, and fairly organized for survival.",
@@ -57,6 +62,7 @@
         ]
       },
       {
+        "id": 6,
         "slug": "the-creative-pulse",
         "title": "The Creative Pulse",
         "description": "You live a life of unique, rhythmic expression. Your inner pulse acts as a beacon of inspiration for those who have lost their own creative direction.",
@@ -68,6 +74,7 @@
         ]
       },
       {
+        "id": 7,
         "slug": "the-ambitious-achiever",
         "title": "The Ambitious Achiever",
         "description": "Your lived experience is a climb toward success. You show others what is possible when raw ambition is paired with instinctive endurance.",
@@ -79,6 +86,7 @@
         ]
       },
       {
+        "id": 8,
         "slug": "the-sensitive-synthesizer",
         "title": "The Sensitive Synthesizer",
         "description": "You relate to others through emotional sensitivity. You feel the needs of the community and seek to create synthesis and spiritual abundance.",
@@ -90,6 +98,7 @@
         ]
       },
       {
+        "id": 9,
         "slug": "the-passionate-adventurer",
         "title": "The Passionate Adventurer",
         "description": "Your life is a series of emotional cycles that lead to wisdom. You share your experiences of desire and trial-and-error to help the collective grow.",
@@ -101,6 +110,7 @@
         ]
       },
       {
+        "id": 10,
         "slug": "the-focused-master",
         "title": "The Focused Master",
         "description": "You live in a world of deep concentration and skill. You stay still until a logical pattern is fully understood or a cycle is perfectly finished.",
@@ -112,6 +122,7 @@
         ]
       },
       {
+        "id": 11,
         "slug": "the-instinctive-entrepreneur",
         "title": "The Instinctive Entrepreneur",
         "description": "You relate to others through your 'nose' for opportunity. You use instinctive memory to sell ideas and products that thrive in the now.",
@@ -123,6 +134,7 @@
         ]
       },
       {
+        "id": 12,
         "slug": "the-shock-catalyst",
         "title": "The Shock Catalyst",
         "description": "Your presence is initiatory. You relate to others by 'shocking' them into a new way of being, taking leaps into the unknown with competitive power.",
@@ -134,6 +146,7 @@
         ]
       },
       {
+        "id": 13,
         "slug": "the-community-negotiator",
         "title": "The Community Negotiator",
         "description": "You relate to others through the heart. You understand that community is built on loyalty, fair deals, and physical bonding.",
@@ -145,6 +158,7 @@
         ]
       },
       {
+        "id": 14,
         "slug": "the-experimental-sage",
         "title": "The Experimental Sage",
         "description": "Your lived experience is one of 'trial and error.' You dive into cycles of experience and share the wisdom of your journey when the dust settles.",
@@ -156,6 +170,7 @@
         ]
       },
       {
+        "id": 15,
         "slug": "the-rhythmic-guide",
         "title": "The Rhythmic Guide",
         "description": "You live in flow with the natural patterns of life. Your internal clock draws others into a healthy, productive, and stable rhythm.",
@@ -167,6 +182,7 @@
         ]
       },
       {
+        "id": 16,
         "slug": "the-charismatic-manifestor",
         "title": "The Charismatic Manifestor",
         "description": "You relate to the world through pure, busy activity. Your energy is infectious, turning your convictions into busy reality in the blink of an eye.",
