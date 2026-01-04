@@ -1,0 +1,214 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "text": "I often feel a deep need to march to the beat of my own drum, regardless of what others think.",
+      "archetype": "individualist",
+      "impacted_gates": [10, 51, 34, 1],
+      "weight": 1.0
+    },
+    {
+      "id": 2,
+      "text": "I find that my presence alone can be quite provocative or intense for other people.",
+      "archetype": "individualist",
+      "impacted_gates": [39, 51, 57, 43],
+      "weight": 1.2
+    },
+    {
+      "id": 3,
+      "text": "I feel most empowered when I am acting completely independently and on my own terms.",
+      "archetype": "individualist",
+      "impacted_gates": [34, 10, 20],
+      "weight": 1.0
+    },
+    {
+      "id": 4,
+      "text": "I have a unique creative rhythm that doesn't always align with a standard 9-to-5 schedule.",
+      "archetype": "individualist",
+      "impacted_gates": [1, 2, 8, 34],
+      "weight": 1.0
+    },
+    {
+      "id": 5,
+      "text": "I often feel like a 'lone wolf' even when I am surrounded by a large group of people.",
+      "archetype": "individualist",
+      "impacted_gates": [10, 25, 20, 34],
+      "weight": 1.1
+    },
+    {
+      "id": 6,
+      "text": "I receive sudden 'downloads' or flashes of insight that I can't always explain with logic.",
+      "archetype": "truth-seeker",
+      "impacted_gates": [61, 24, 43],
+      "weight": 1.5
+    },
+    {
+      "id": 7,
+      "text": "I have a very 'acoustic' or internal way of knowing things; I just hear the truth in my head.",
+      "archetype": "truth-seeker",
+      "impacted_gates": [61, 12, 22],
+      "weight": 1.3
+    },
+    {
+      "id": 8,
+      "text": "I enjoy the struggle of solving a mystery or a deep philosophical problem.",
+      "archetype": "truth-seeker",
+      "impacted_gates": [38, 28, 61],
+      "weight": 1.0
+    },
+    {
+      "id": 9,
+      "text": "I often feel like my ideas are 'ahead of their time' and difficult for others to grasp initially.",
+      "archetype": "truth-seeker",
+      "impacted_gates": [43, 23, 24],
+      "weight": 1.2
+    },
+    {
+      "id": 10,
+      "text": "I find that my moods can be very deep and musical, shifting like the tide for no apparent reason.",
+      "archetype": "truth-seeker",
+      "impacted_gates": [39, 55, 22],
+      "weight": 1.4
+    },
+    {
+      "id": 11,
+      "text": "Supporting my family or my 'tribe' is the most important thing in my life.",
+      "archetype": "steward",
+      "impacted_gates": [50, 27, 37, 40],
+      "weight": 1.2
+    },
+    {
+      "id": 12,
+      "text": "I am very sensitive to the needs of others and naturally want to nurture or protect them.",
+      "archetype": "steward",
+      "impacted_gates": [50, 27, 59, 6],
+      "weight": 1.1
+    },
+    {
+      "id": 13,
+      "text": "I believe that clear agreements and 'fair deals' are the foundation of any good relationship.",
+      "archetype": "steward",
+      "impacted_gates": [40, 37, 19],
+      "weight": 1.3
+    },
+    {
+      "id": 14,
+      "text": "I have a strong instinct for managing resources, whether it's money, food, or talent.",
+      "archetype": "steward",
+      "impacted_gates": [21, 45, 44],
+      "weight": 1.5
+    },
+    {
+      "id": 15,
+      "text": "I feel a deep responsibility to pass on values and traditions to the next generation.",
+      "archetype": "steward",
+      "impacted_gates": [50, 27, 19],
+      "weight": 1.0
+    },
+    {
+      "id": 16,
+      "text": "I am naturally critical of systems because I want to see them corrected and improved.",
+      "archetype": "logic-master",
+      "impacted_gates": [18, 58, 63],
+      "weight": 1.2
+    },
+    {
+      "id": 17,
+      "text": "I love looking at data and patterns to predict what will happen in the future.",
+      "archetype": "logic-master",
+      "impacted_gates": [63, 4, 17],
+      "weight": 1.3
+    },
+    {
+      "id": 18,
+      "text": "I believe that mastering a specific skill through repetition is the key to success.",
+      "archetype": "logic-master",
+      "impacted_gates": [16, 48, 9],
+      "weight": 1.1
+    },
+    {
+      "id": 19,
+      "text": "I am very disciplined and can stay focused on a single project for a very long time.",
+      "archetype": "logic-master",
+      "impacted_gates": [9, 52, 5],
+      "weight": 1.2
+    },
+    {
+      "id": 20,
+      "text": "I find myself naturally stepping into a leadership role to guide a group toward a logical goal.",
+      "archetype": "logic-master",
+      "impacted_gates": [31, 7, 17],
+      "weight": 1.4
+    },
+    {
+      "id": 21,
+      "text": "I love to reflect on my past and extract the 'moral of the story' to share with others.",
+      "archetype": "storyteller",
+      "impacted_gates": [33, 13, 64],
+      "weight": 1.3
+    },
+    {
+      "id": 22,
+      "text": "I am constantly seeking new experiences just so I can learn what they feel like.",
+      "archetype": "storyteller",
+      "impacted_gates": [35, 36, 41],
+      "weight": 1.2
+    },
+    {
+      "id": 23,
+      "text": "I often have a 'sense of deja vu' or feel like I'm reliving history through my own life.",
+      "archetype": "storyteller",
+      "impacted_gates": [64, 47, 11],
+      "weight": 1.1
+    },
+    {
+      "id": 24,
+      "text": "I find that I am a naturally curious person who is always looking for new ideas to explore.",
+      "archetype": "storyteller",
+      "impacted_gates": [11, 56, 41],
+      "weight": 1.0
+    },
+    {
+      "id": 25,
+      "text": "I find that my life moves in distinct cycles—once a cycle is over, I must move on completely.",
+      "archetype": "storyteller",
+      "impacted_gates": [53, 42, 33],
+      "weight": 1.4
+    },
+    {
+      "id": 26,
+      "text": "I feel like a 'catalyst' for change; things often start moving when I enter a room.",
+      "archetype": "catalyst",
+      "impacted_gates": [3, 60, 51],
+      "weight": 1.5
+    },
+    {
+      "id": 27,
+      "text": "I have an intense, pulsing energy that seems to turn on and off without my control.",
+      "archetype": "catalyst",
+      "impacted_gates": [3, 60, 2],
+      "weight": 1.3
+    },
+    {
+      "id": 28,
+      "text": "I am deeply committed to whatever I start, seeing it through to the very end.",
+      "archetype": "catalyst",
+      "impacted_gates": [29, 46, 42],
+      "weight": 1.1
+    },
+    {
+      "id": 29,
+      "text": "I feel a pressure to constantly innovate and bring something brand new into existence.",
+      "archetype": "catalyst",
+      "impacted_gates": [3, 1, 60],
+      "weight": 1.2
+    },
+    {
+      "id": 30,
+      "text": "I am often the one who 'shocks' a system or a person into a new way of being.",
+      "archetype": "catalyst",
+      "impacted_gates": [51, 25, 3],
+      "weight": 1.4
+    }
+  ]
+}
