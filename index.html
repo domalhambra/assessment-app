@@ -2,35 +2,62 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Archetype Test</title>
-    <link rel="stylesheet" href="style.css"> </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human Design Archetype Test</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
 <body>
+
     <div id="quiz-container">
         <div id="progress-bar">
             <div id="progress-fill"></div>
         </div>
+
         <div id="question-box">
             <h2 id="question-text">Loading your journey...</h2>
             <div id="answer-buttons">
-                <button onclick="handleAnswer(1)">Strongly Disagree</button>
-                <button onclick="handleAnswer(2)">Disagree</button>
-                <button onclick="handleAnswer(3)">Neutral</button>
-                <button onclick="handleAnswer(4)">Agree</button>
                 <button onclick="handleAnswer(5)">Strongly Agree</button>
+                <button onclick="handleAnswer(4)">Agree</button>
+                <button onclick="handleAnswer(3)">Neutral</button>
+                <button onclick="handleAnswer(2)">Disagree</button>
+                <button onclick="handleAnswer(1)">Strongly Disagree</button>
             </div>
         </div>
-    <div id="results-box" style="display:none;">
-        <div class="card-gradient">
-            <p class="card-label">HUMAN DESIGN PROFILE</p>
-            <h1 id="archetype-result"></h1>
-            <div id="channel-result"></div> </div>
     </div>
-        <div class="button-group">
-            <button id="share-btn" onclick="shareResults()">Share My Result</button>
-            <button id="restart-btn" onclick="restartTest()">Retake Test</button>
+
+    <div id="results-box" style="display:none;">
+        <div id="quiz-container"> <div class="card-gradient">
+                <p class="card-label">HUMAN DESIGN PROFILE</p>
+                <h1 id="archetype-result">Calculating...</h1>
+                
+                <div id="channel-result"></div>
+            </div>
+
+            <div class="button-group">
+                <button id="share-btn" onclick="shareResults()">Share Result</button>
+                <button id="restart-btn" onclick="restartTest()">Retake Test</button>
+            </div>
         </div>
     </div>
 
     <script src="script.js"></script>
+
+    <script>
+        // Simple share function for the button
+        function shareResults() {
+            const text = `I just discovered my Human Design Archetype: ${document.getElementById('archetype-result').innerText}! Take the test here: ${window.location.href}`;
+            if (navigator.share) {
+                navigator.share({
+                    title: 'My Human Design Result',
+                    text: text,
+                    url: window.location.href,
+                });
+            } else {
+                navigator.clipboard.writeText(text);
+                alert("Results copied to clipboard!");
+            }
+        }
+    </script>
 </body>
 </html>
